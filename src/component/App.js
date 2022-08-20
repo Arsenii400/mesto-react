@@ -41,12 +41,21 @@ function App() {
   return (
     <div className="page">
       <Header />
-      <Main onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick}
-        onEditAvatar={handleEditAvatarClick} onCardClick={handleCardClick} />
+      <Main
+        onEditProfile={handleEditProfileClick}
+        onAddPlace={handleAddPlaceClick}
+        onEditAvatar={handleEditAvatarClick}
+        onCardClick={handleCardClick} />
       <Footer />
 
-      <PopupWithForm name="edit" container="container" heading="heading" title="Редактировать профиль"
-        buttonTitle="Сохранить" isOpen={isEditProfilePopupOpen} onClose={closeAllPopups}>
+      <PopupWithForm
+        name="edit"
+        container="container"
+        heading="heading"
+        title="Редактировать профиль"
+        buttonTitle="Сохранить"
+        isOpen={isEditProfilePopupOpen}
+        onClose={closeAllPopups}>
         <label className="popup__field">
           <input className="popup__input popup__input_type_name" id="title-input" type="text" name="fullName"
             minLength="2"
@@ -61,8 +70,14 @@ function App() {
         </label>
       </PopupWithForm>
 
-      <PopupWithForm name="add" container="container" heading="heading" title="Новое место" buttonTitle="Создать"
-        isOpen={isAddPlacePopupOpen} onClose={closeAllPopups}>
+      <PopupWithForm
+        name="add"
+        container="container"
+        heading="heading"
+        title="Новое место"
+        buttonTitle="Создать"
+        isOpen={isAddPlacePopupOpen}
+        onClose={closeAllPopups}>
         <label className="popup__field">
           <input className="popup__input popup__input_type_place" id="name-input" type="text" name="place"
             minLength="2"
@@ -76,8 +91,14 @@ function App() {
         </label>
       </PopupWithForm>
 
-      <PopupWithForm name="updateAvatar" container="updateAvatar-container" heading="heading" title="Обновить аватар"
-        buttonTitle="Сохранить" isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups}>
+      <PopupWithForm
+        name="updateAvatar"
+        container="updateAvatar-container"
+        heading="heading"
+        title="Обновить аватар"
+        buttonTitle="Сохранить"
+        isOpen={isEditAvatarPopupOpen}
+        onClose={closeAllPopups}>
         <label className="popup__field">
           <input className="popup__input popup__input_type_avatar" id="avatar-input" type="url" name="avatar"
             placeholder="Ссылка на аватар" required />
@@ -85,7 +106,10 @@ function App() {
         </label>
       </PopupWithForm>
 
-      <PopupWithForm name="deleteConfirmation" container="dltConfirm-container" heading="dltConfirm-heading"
+      <PopupWithForm
+        name="deleteConfirmation"
+        container="dltConfirm-container"
+        heading="dltConfirm-heading"
         title="Вы уверены?" buttonTitle="Да" />
 
       <ImagePopup isOpen={selectedCard.isOpen} card={selectedCard} onClose={closeAllPopups} />
