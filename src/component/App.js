@@ -9,6 +9,7 @@ import ImagePopup from './ImagePopup';
 import CurrentUserContext from '../contexts/CurrentUserContext';
 import { api } from '../utils/Api.js';
 import EditProfilePopup from './EditProfilePopup';
+import EditAvatarPopup from './EditAvatarPopup';
 
 function App() {
 
@@ -53,11 +54,22 @@ function App() {
     setSelectedCard({ isOpen: true, card: card });
   }
 
-  function handleUpdateUser() {
-    api.patchProfileEdit()
+  function handleUpdateUser(data) {
+    api.patchProfileEdit(data)
       .then((res) => {
-        setCurrentUser(res)
-        closeAllPopups()
+        setCurrentUser(res);
+        closeAllPopups();
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
+
+  function handleUpdateAvatar(data) {
+    api.updateAvatar(data)
+      .then((res) => {
+        setCurrentUser(res);
+        closeAllPopups();
       })
       .catch((err) => {
         console.log(err);
@@ -101,20 +113,7 @@ function App() {
           </label>
         </PopupWithForm>
 
-        <PopupWithForm
-          name="updateAvatar"
-          container="updateAvatar-container"
-          heading="heading"
-          title="Обновить аватар"
-          buttonTitle="Сохранить"
-          isOpen={isEditAvatarPopupOpen}
-          onClose={closeAllPopups}>
-          <label className="popup__field">
-            <input className="popup__input popup__input_type_avatar" id="avatar-input" type="url" name="avatar"
-              placeholder="Ссылка на аватар" required />
-            <span className="popup__input-error avatar-input-error"></span>
-          </label>
-        </PopupWithForm>
+        <EditAvatarPopup onUpdateAvatar={handleUpdateAvatar} isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} />
 
         <PopupWithForm
           name="deleteConfirmation"
