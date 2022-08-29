@@ -6,8 +6,8 @@ function EditProfilePopup(props) {
 
   const currentUser = React.useContext(CurrentUserContext);
 
-  const [name, setName] = React.useState({name: ''});
-  const [description, setDescription] = React.useState({about: ''});
+  const [name, setName] = React.useState({ name: '' });
+  const [description, setDescription] = React.useState({ about: '' });
 
   function handleNameChange(e) {
     setName(e.target.value)
@@ -41,7 +41,8 @@ function EditProfilePopup(props) {
       buttonTitle="Сохранить"
       isOpen={props.isOpen}
       onClose={props.onClose}
-      onSubmit={handleSubmit}>
+      onSubmit={handleSubmit}
+    >
       <label className="popup__field">
         <input
           value={name}

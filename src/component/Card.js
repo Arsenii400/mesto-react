@@ -33,7 +33,6 @@ function Card(props) {
     props.onCardDelete(props.data);
   }
 
-
   return (
     <li className="element" key={`"${props.data._id}"`}>
       <button onClick={handleDeleteClick} className={cardDeleteButtonClassName} type="button" aria-label="trash" />
